@@ -21,10 +21,28 @@ class MainViewModel(
 
     @get:Bindable
     var availableDefinitions = emptyList<Definition>()
-    set(value) {
-        field = value
-        notifyPropertyChanged(BR.availableDefinitions)
-    }
+        set(value) {
+            field = value
+            recyclerViewItemViewModels = value.map {
+                DefinitionItemViewModel().apply {
+                    definition = it
+                }
+            }.toMutableList()
+            notifyPropertyChanged(BR.availableDefinitions)
+        }
+
+    var recyclerViewItemViewModels = mutableListOf<DefinitionItemViewModel>()
+        private set
+
+    var exitEnabled = false
+
+    @get:Bindable
+    var sorted = false
+        set(value) {
+            field = value
+            if (value)
+                notifyPropertyChanged(BR.sorted)
+        }
 
     fun getDefinitions() = background {
         Timber.d("MainViewModel_TAG: getDefinition: ")
@@ -34,5 +52,19 @@ class MainViewModel(
                 is ApiResult.Ok -> availableDefinitions = result
             }
         }
+    }
+
+    fun sortThumbsUp() {
+        Timber.d("MainViewModel_TAG: sortThumbsUp: ")
+        loading = true
+        recyclerViewItemViewModels.sortByDescending { it.definition?.thumbsUp }
+        sorted = true
+    }
+
+    fun sortThumbsDown() {
+        Timber.d("MainViewModel_TAG: sortThumbsDown: ")
+        loading = true
+        recyclerViewItemViewModels.sortByDescending { it.definition?.thumbsDown }
+        sorted = true
     }
 }

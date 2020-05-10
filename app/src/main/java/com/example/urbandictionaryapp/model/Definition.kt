@@ -16,5 +16,6 @@ data class Definition(
     val currentVote: String,
     val writtenOn: Date?,
     val example: String,
-    val thumbsDown: Int
+    val thumbsDown: Int,
+    var currentSoundIndex: Int = 0
 ) : Parcelable

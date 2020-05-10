@@ -2,4 +2,9 @@
 
     <string name="definition_to_search_hint">Definition to search</string>
     <string name="search_button">Search Button</string>
+    <string name="thumbs_up_image">Thumbs Up Image</string>
+    <string name="thumb_down_image">Thumb down image</string>
+    <string name="by_label">by</string>
+    <string name="exit_message">Click again to exit</string>
+    <string name="sort_by_label">Sort by</string>
 </resources>

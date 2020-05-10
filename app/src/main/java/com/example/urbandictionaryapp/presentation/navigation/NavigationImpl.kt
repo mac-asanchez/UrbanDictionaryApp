@@ -64,7 +64,7 @@ class NavigationImpl : Navigation {
 
     private fun getPreviousScreen(fromActivity: AppCompatActivity): Class<*>? =
         when (fromActivity::class) {
-            MainActivity::class -> MainActivity::class.java
+//            MainActivity::class -> MainActivity::class.java
             else -> null
         }
 
@@ -89,6 +89,6 @@ class NavigationImpl : Navigation {
     }
 
     private val noReturnActivity = listOf<Class<*>>(
-        MainActivity::class.java
+//        MainActivity::class.java
     )
 }

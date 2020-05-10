@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -16,10 +17,9 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilTerm"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/definition_to_search_hint"
-            app:layout_constraintEnd_toStartOf="@id/btnSearch"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -28,23 +28,68 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
+                android:drawableStart="@drawable/ic_search"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/colorHint"
+                android:imeOptions="actionDone"
                 android:importantForAutofill="no"
                 android:inputType="text"
                 android:text="@={viewModel.term}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <ImageButton
-            android:id="@+id/btnSearch"
+        <TextView
+            android:id="@+id/tvSortBy"
+            style="@style/DefinitionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:contentDescription="@string/search_button"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_search"
-            app:layout_constraintBottom_toBottomOf="@id/tilTerm"
+            android:text="@string/sort_by_label"
+            app:layout_constraintBottom_toBottomOf="@id/btnThumbsUp"
+            app:layout_constraintEnd_toStartOf="@id/btnThumbsUp"
+            app:layout_constraintTop_toTopOf="@id/btnThumbsUp" />
+
+        <ImageButton
+            android:id="@+id/btnThumbsUp"
+            style="@style/SortButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/thumbs_up_image"
+            android:onClick="@{() -> viewModel.sortThumbsUp()}"
+            android:src="@drawable/ic_thumbs_up"
+            app:layout_constraintEnd_toStartOf="@id/btnThumbsDown"
+            app:layout_constraintTop_toBottomOf="@id/tilTerm" />
+
+        <ImageButton
+            android:id="@+id/btnThumbsDown"
+            style="@style/SortButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/thumb_down_image"
+            android:onClick="@{() -> viewModel.sortThumbsDown()}"
+            android:src="@drawable/ic_thumbs_down"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tilTerm" />
+            app:layout_constraintTop_toBottomOf="@id/tilTerm" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvDefinitions"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSortBy" />
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:visibility="@{viewModel.loading}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

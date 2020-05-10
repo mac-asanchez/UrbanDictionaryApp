@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.urbandictionaryapp.presentation.main.DefinitionItemViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/DefinitionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.title}"
+            app:layout_constraintBottom_toBottomOf="@id/ivSound"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ivSound"
+            tools:text="wat" />
+
+        <ImageView
+            android:id="@+id/ivSound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/thumbs_up_image"
+            android:padding="10dp"
+            android:src="@drawable/ic_volume"
+            app:layout_constraintStart_toEndOf="@id/tvTitle"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvDefinition"
+            style="@style/DefinitionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.text}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            tools:text="The only [proper] [response] to something that makes absolutely [no sense]." />
+
+        <TextView
+            android:id="@+id/tvBy"
+            style="@style/DefinitionFooter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/by_label"
+            app:layout_constraintBottom_toBottomOf="@id/ivThumbsDown"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ivThumbsDown" />
+
+        <TextView
+            android:id="@+id/tvAuthor"
+            style="@style/DefinitionFooter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="@{viewModel.author}"
+            app:layout_constraintBottom_toBottomOf="@id/ivThumbsDown"
+            app:layout_constraintEnd_toStartOf="@id/ivThumbsUp"
+            app:layout_constraintStart_toEndOf="@id/tvBy"
+            app:layout_constraintTop_toTopOf="@id/ivThumbsDown"
+            tools:text="watwat" />
+
+        <ImageView
+            android:id="@+id/ivThumbsUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/thumbs_up_image"
+            android:src="@drawable/ic_thumbs_up"
+            app:layout_constraintEnd_toStartOf="@id/tvThumbsUp"
+            app:layout_constraintTop_toBottomOf="@id/tvDefinition" />
+
+        <TextView
+            android:id="@+id/tvThumbsUp"
+            style="@style/ThumbsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.thumbsUp}"
+            app:layout_constraintBottom_toBottomOf="@id/ivThumbsDown"
+            app:layout_constraintEnd_toStartOf="@id/ivThumbsDown"
+            app:layout_constraintTop_toTopOf="@id/ivThumbsDown"
+            tools:text="3684" />
+
+        <ImageView
+            android:id="@+id/ivThumbsDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/thumb_down_image"
+            android:src="@drawable/ic_thumbs_down"
+            app:layout_constraintEnd_toStartOf="@id/tvThumbsDown"
+            app:layout_constraintTop_toBottomOf="@id/tvDefinition" />
+
+        <TextView
+            android:id="@+id/tvThumbsDown"
+            style="@style/ThumbsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.thumbsDown}"
+            app:layout_constraintBottom_toBottomOf="@id/ivThumbsDown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ivThumbsDown"
+            tools:text="425" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

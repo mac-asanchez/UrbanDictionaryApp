@@ -125,6 +125,9 @@ dependencies {
     kapt "android.arch.persistence.room:compiler:$room"
     implementation "android.arch.persistence.room:runtime:$room"
     annotationProcessor "android.arch.persistence.room:compiler:$room"
+
+    //ExoPlayer
+    implementation "com.google.android.exoplayer:exoplayer:$exoplayer"
 }
 
 static def gitBranch() {
