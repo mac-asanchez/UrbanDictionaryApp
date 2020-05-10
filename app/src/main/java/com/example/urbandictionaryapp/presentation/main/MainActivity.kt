@@ -33,7 +33,5 @@ class MainActivity : BaseActivity() {
         super.onResume()
         layout =
             setBinding(this, R.layout.main_activity_layout, viewModel) as MainActivityLayoutBinding
-
-        viewModel.term = "wat"
     }
 }

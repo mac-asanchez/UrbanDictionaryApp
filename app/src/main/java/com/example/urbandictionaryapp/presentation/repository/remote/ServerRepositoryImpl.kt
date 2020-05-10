@@ -12,11 +12,13 @@ import timber.log.Timber
 class ServerRepositoryImpl(
     private val serverAPI: ServerAPI
 ) : ServerRepository {
+    private val cachedDefinitions = mutableMapOf<String, List<Definition>>()
+
     override fun getDefinitionsAsync(term: String): Deferred<ApiResult<List<Definition>>> =
         GlobalScope.async {
             try {
                 ApiResult.Ok(
-                    serverAPI.getDefinitionsAsync(
+                    cachedDefinitions[term] ?: serverAPI.getDefinitionsAsync(
                         host = BuildConfig.HOST,
                         key = BuildConfig.KEY,
                         term = term
@@ -30,10 +32,15 @@ class ServerRepositoryImpl(
                             word = it.word,
                             defId = it.defid,
                             currentVote = it.current_vote,
-                            writtenOn = dateFormat.parse(it.written_on.replace("T", " ").replace("Z", "")),
+                            writtenOn = dateFormat.parse(
+                                it.written_on.replace("T", " ").replace("Z", "")
+                            ),
                             example = it.example,
                             thumbsDown = it.thumbs_down
                         )
+                    }.run {
+                        cachedDefinitions[term] = this
+                        this
                     }
                 )
             } catch (e: Exception) {
