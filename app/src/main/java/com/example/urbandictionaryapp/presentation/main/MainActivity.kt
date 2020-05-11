@@ -2,6 +2,7 @@ package com.example.urbandictionaryapp.presentation.main
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.annotation.VisibleForTesting
 import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,7 +16,7 @@ import timber.log.Timber
 
 class MainActivity : BaseActivity() {
     private val viewModel by viewModel<MainViewModel>()
-    private lateinit var layout: MainActivityLayoutBinding
+    lateinit var layout: MainActivityLayoutBinding
     private lateinit var definitionsAdapter: RVDefinitionAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +54,7 @@ class MainActivity : BaseActivity() {
         definitionsAdapter.itemList = viewModel.recyclerViewItemViewModels
     }
 
+    @VisibleForTesting
     private fun playSound(definition: Definition) {
         Timber.d("MainActivity_TAG: playSound: ${definition.word}, currentSoundIndex: ${definition.currentSoundIndex}")
     }

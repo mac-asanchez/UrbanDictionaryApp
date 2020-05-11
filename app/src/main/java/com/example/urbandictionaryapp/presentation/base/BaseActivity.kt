@@ -11,7 +11,7 @@ import org.koin.android.ext.android.inject
 import timber.log.Timber
 
 abstract class BaseActivity : AppCompatActivity() {
-    protected val navigation by inject<Navigation>()
+    val navigation by inject<Navigation>()
     protected lateinit var binding: ViewDataBinding
 
     protected fun setBinding(activity: AppCompatActivity, layoutId: Int, viewModel: BaseViewModel) : ViewDataBinding {

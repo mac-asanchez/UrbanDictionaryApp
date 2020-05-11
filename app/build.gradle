@@ -85,6 +85,7 @@ dependencies {
     testImplementation "junit:junit:$jUnit"
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
+    androidTestImplementation "androidx.test:rules:$androidxTest"
     kapt "com.android.databinding:compiler:$android_plugin_version"
 
     //mockito
@@ -92,7 +93,7 @@ dependencies {
     androidTestImplementation "org.mockito:mockito-android:$mockito"
     testImplementation "org.mockito:mockito-core:$mockito"
     testImplementation "org.mockito:mockito-inline:$mockito"
-    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
+
 
     //robolectric
     testImplementation 'org.robolectric:robolectric:4.3'

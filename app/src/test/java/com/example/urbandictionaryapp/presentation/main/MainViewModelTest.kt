@@ -33,7 +33,7 @@ class MainViewModelTest {
 
     private fun setAvailableDefinitions() {
         val filePath =
-            "/Users/arturosanchez/Desktop/Project/Challenges/UrbanDictionaryApp/app/src/test/java/com/example/urbandictionaryapp/repository/getDefinitionsJson.json"
+            "/Users/arturosanchez/Desktop/Project/Challenges/UrbanDictionaryApp/app/src/test/java/com/example/urbandictionaryapp/repository/get_definitions.json"
         val remoteResponse = readJsonResponse(false, DefineResponse::class.java, filePath)
         viewModel.availableDefinitions = remoteResponse!!.list.map {
             Definition(
