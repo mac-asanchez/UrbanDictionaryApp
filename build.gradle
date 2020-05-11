@@ -31,20 +31,21 @@ task clean(type: Delete) {
 }
 
 ext {
-    compileSdk = 28
+    androidXUI = '2.2.1'
     buildTools = '28.0.3'
-    supportLibrary = '28.0.0'
-    jUnit = '4.12'
+    compileSdk = 28
+    coroutines = '1.1.1'
     espresso = '3.2.0'
     exoplayer = '2.10.8'
-    timber = '4.7.1'
+    jUnit = '4.12'
     koin = '2.0.0-rc-2'
-    coroutines = '1.1.1'
-    retrofit = "2.4.0"
+    mockito = '2.27.0'
     okhttp = "3.14.1"
     recyclerview = "28.0.0"
+    retrofit = "2.4.0"
     room = '1.1.1'
-    androidXUI = '2.2.1'
+    supportLibrary = '28.0.0'
+    timber = '4.7.1'
 }
 
 def getProps(path) {
