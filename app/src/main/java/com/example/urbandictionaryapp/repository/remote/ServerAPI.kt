@@ -1,7 +1,7 @@
-package com.example.urbandictionaryapp.presentation.repository.remote
+package com.example.urbandictionaryapp.repository.remote
 
 import com.example.urbandictionaryapp.BuildConfig
-import com.example.urbandictionaryapp.presentation.repository.remote.request.DefineResponse
+import com.example.urbandictionaryapp.repository.remote.request.DefineResponse
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Header

@@ -1,4 +1,4 @@
-package com.example.urbandictionaryapp.presentation.repository.remote.request
+package com.example.urbandictionaryapp.repository.remote.request
 
 
 import com.squareup.moshi.Json

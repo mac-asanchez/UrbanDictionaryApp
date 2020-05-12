@@ -4,9 +4,9 @@ import androidx.databinding.Bindable
 import androidx.databinding.library.baseAdapters.BR
 import com.example.urbandictionaryapp.model.Definition
 import com.example.urbandictionaryapp.presentation.base.BaseViewModel
-import com.example.urbandictionaryapp.presentation.repository.ApiResult
-import com.example.urbandictionaryapp.presentation.repository.remote.ServerRepository
-import com.example.urbandictionaryapp.presentation.repository.runOnResult
+import com.example.urbandictionaryapp.repository.ApiResult
+import com.example.urbandictionaryapp.repository.remote.ServerRepository
+import com.example.urbandictionaryapp.repository.runOnResult
 import timber.log.Timber
 
 class MainViewModel(

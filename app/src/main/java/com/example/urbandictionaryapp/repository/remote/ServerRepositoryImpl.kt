@@ -1,9 +1,9 @@
-package com.example.urbandictionaryapp.presentation.repository.remote
+package com.example.urbandictionaryapp.repository.remote
 
 import com.example.urbandictionaryapp.BuildConfig
 import com.example.urbandictionaryapp.core.dateFormat
 import com.example.urbandictionaryapp.model.Definition
-import com.example.urbandictionaryapp.presentation.repository.ApiResult
+import com.example.urbandictionaryapp.repository.ApiResult
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async

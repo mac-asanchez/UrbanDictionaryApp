@@ -12,8 +12,8 @@ import com.example.urbandictionaryapp.R
 import com.example.urbandictionaryapp.ScreenUnitTestRule
 import com.example.urbandictionaryapp.core.dateFormat
 import com.example.urbandictionaryapp.model.Definition
-import com.example.urbandictionaryapp.presentation.repository.remote.ServerRepository
-import com.example.urbandictionaryapp.presentation.repository.remote.request.DefineResponse
+import com.example.urbandictionaryapp.repository.remote.ServerRepository
+import com.example.urbandictionaryapp.repository.remote.request.DefineResponse
 import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test

@@ -1,4 +1,4 @@
-package com.example.urbandictionaryapp.presentation.repository
+package com.example.urbandictionaryapp.repository
 
 import kotlinx.coroutines.Deferred
 

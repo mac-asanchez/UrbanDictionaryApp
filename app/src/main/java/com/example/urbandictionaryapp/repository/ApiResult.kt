@@ -1,4 +1,4 @@
-package com.example.urbandictionaryapp.presentation.repository
+package com.example.urbandictionaryapp.repository
 
 sealed class ApiResult<out R> {
     class Error(val error: Exception) : ApiResult<Nothing>()
