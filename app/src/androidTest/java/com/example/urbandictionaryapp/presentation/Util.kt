@@ -1,4 +1,4 @@
-package com.example.urbandictionaryapp.presentation.main
+package com.example.urbandictionaryapp.presentation
 
 import android.content.Context
 import android.view.inputmethod.InputMethodManager

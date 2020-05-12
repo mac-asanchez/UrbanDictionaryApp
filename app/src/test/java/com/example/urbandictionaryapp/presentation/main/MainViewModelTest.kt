@@ -4,16 +4,19 @@ import android.content.Context
 import android.os.Build
 import androidx.databinding.library.baseAdapters.BR
 import androidx.test.platform.app.InstrumentationRegistry
+import com.example.urbandictionaryapp.R
 import com.example.urbandictionaryapp.core.dateFormat
 import com.example.urbandictionaryapp.model.Definition
-import com.example.urbandictionaryapp.readJsonResponse
+import com.example.urbandictionaryapp.readJsonResponseFromResource
 import com.example.urbandictionaryapp.repository.remote.ServerRepository
 import com.example.urbandictionaryapp.repository.remote.request.DefineResponse
+import org.junit.After
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.koin.core.context.stopKoin
 import org.mockito.Mockito.mock
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
@@ -31,10 +34,16 @@ class MainViewModelTest {
         context = InstrumentationRegistry.getInstrumentation().context
     }
 
+    @After
+    fun wrappingThingsUp() {
+        stopKoin()
+    }
+
     private fun setAvailableDefinitions() {
-        val filePath =
-            "/Users/arturosanchez/Desktop/Project/Challenges/UrbanDictionaryApp/app/src/test/java/com/example/urbandictionaryapp/repository/get_definitions.json"
-        val remoteResponse = readJsonResponse(false, DefineResponse::class.java, filePath)
+        val jsonString = context.resources.openRawResource(R.raw.get_definitions)
+            .bufferedReader().use { it.readText() }
+        val remoteResponse =
+            readJsonResponseFromResource(false, DefineResponse::class.java, jsonString)
         viewModel.availableDefinitions = remoteResponse!!.list.map {
             Definition(
                 definition = it.definition,
