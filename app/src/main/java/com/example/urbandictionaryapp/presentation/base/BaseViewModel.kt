@@ -8,6 +8,7 @@ import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
 
+//Base class for wrapping same functionality
 open class BaseViewModel : ViewModel(), Observable {
     private val jobs = mutableListOf<Job>()
 

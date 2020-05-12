@@ -7,6 +7,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
+//Resource for waiting
 class DelayableIdlingResource {
 
     private val counter: CountingIdlingResource = CountingIdlingResource("DelayableIdlingResource${hashCode()}").apply {

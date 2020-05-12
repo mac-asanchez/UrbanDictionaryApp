@@ -8,6 +8,8 @@ import com.example.urbandictionaryapp.core.Session
 import com.example.urbandictionaryapp.presentation.main.MainActivity
 import timber.log.Timber
 
+//Must of the functionality is not needed
+//Not needed but kept for scalability purposes
 class NavigationImpl : Navigation {
     override fun navigateBack(fromActivity: AppCompatActivity, defaultBehavior: () -> Unit) {
         Timber.d("NavigationImpl_TAG: navigateBack: from: ${fromActivity::class.simpleName}")

@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.Intent
 import com.example.urbandictionaryapp.presentation.utils.isConnectedToInternet
 
-
+//Checks connection state
 class ConnectivityReceiver(
     private val mConnectivityReceiverListener: ConnectivityReceiverListener
 ) : BroadcastReceiver() {

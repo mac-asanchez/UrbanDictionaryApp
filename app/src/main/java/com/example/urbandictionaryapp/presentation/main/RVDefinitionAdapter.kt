@@ -7,6 +7,7 @@ import com.example.urbandictionaryapp.databinding.DefinitionItemLayoutBinding
 import com.example.urbandictionaryapp.model.Definition
 import com.example.urbandictionaryapp.presentation.base.BaseRVAdapter
 
+//RecyclerView Adapter
 class RVDefinitionAdapter(
     listener: (View, Definition) -> Unit
 ) : BaseRVAdapter<Definition, DefinitionItemViewModel, DefinitionItemLayoutBinding>(listener) {

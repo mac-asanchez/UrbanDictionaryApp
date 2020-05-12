@@ -10,6 +10,7 @@ import com.example.urbandictionaryapp.core.Session
 
 import timber.log.Timber
 
+//Network Scheduler Service
 class NetworkSchedulerService() : JobService(), ConnectivityReceiver.ConnectivityReceiverListener {
     private val mConnectivityReceiver: ConnectivityReceiver = ConnectivityReceiver(this)
 

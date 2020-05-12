@@ -8,6 +8,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.example.urbandictionaryapp.BR
 
+//Base class for wrapping same functionality
 abstract class BaseRVAdapter<IT : Parcelable, IVM : BaseViewModel, VDB : ViewDataBinding>(
     private val listener: (View, IT) -> Unit
 ) : RecyclerView.Adapter<BaseRVAdapter<IT, IVM, VDB>.ViewHolder>() {

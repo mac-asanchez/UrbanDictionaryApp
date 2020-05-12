@@ -9,7 +9,8 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.example.urbandictionaryapp.presentation.utils.readInstanceProperty
 
-@Suppress("RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+//Base class for wrapping same functionality
+//Not needed but kept for scalability purposes
 abstract class BaseSpinnerAdapter<IT : Parcelable>(
     ctx: Context,
     resourceId: Int,
@@ -48,7 +49,6 @@ abstract class BaseSpinnerAdapter<IT : Parcelable>(
         return tv
     }
 
-    @ExperimentalStdlibApi
     override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
         val tv: TextView = super.getView(position, convertView, parent) as TextView
 

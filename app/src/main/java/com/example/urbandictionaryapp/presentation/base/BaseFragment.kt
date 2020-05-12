@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 import com.example.urbandictionaryapp.BR
 import com.example.urbandictionaryapp.core.Session
 
+//Base class for wrapping same functionality
+//Not needed but kept for scalability purposes
 abstract class BaseFragment<L : BaseFragmentListener, VM : BaseViewModel, VDB : ViewDataBinding> :
     Fragment() {
     lateinit var vm: VM

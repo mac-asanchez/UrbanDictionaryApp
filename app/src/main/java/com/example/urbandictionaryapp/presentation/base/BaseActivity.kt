@@ -10,6 +10,7 @@ import com.example.urbandictionaryapp.presentation.utils.isConnectedToInternet
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
+//Base class for wrapping same functionality
 abstract class BaseActivity : AppCompatActivity() {
     val navigation by inject<Navigation>()
     protected lateinit var binding: ViewDataBinding

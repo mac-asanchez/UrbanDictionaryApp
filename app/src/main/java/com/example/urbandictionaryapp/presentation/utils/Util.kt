@@ -6,6 +6,7 @@ import timber.log.Timber
 import kotlin.reflect.KProperty1
 import kotlin.reflect.full.memberProperties
 
+//Checks internet connection
 fun isConnectedToInternet(): Boolean {
     val runtime = Runtime.getRuntime()
     try {
@@ -22,6 +23,7 @@ fun isConnectedToInternet(): Boolean {
     return false
 }
 
+//Not needed but kept for scalability purposes
 @Suppress("UNCHECKED_CAST")
 fun <R> readInstanceProperty(instance: Any, propertyName: String): R {
     val property = instance::class.memberProperties
@@ -31,6 +33,7 @@ fun <R> readInstanceProperty(instance: Any, propertyName: String): R {
     return property.get(instance) as R
 }
 
+//waits n seconds and notifies when its done
 fun wait(seconds: Int, afterDone: () -> Unit) = GlobalScope.launch {
     delay((seconds * 1000).toLong())
 

@@ -12,7 +12,6 @@ class ScreenUnitTestRule<T : Activity>(
 ) : ActivityTestRule<T>(activityClass) {
     @ExperimentalStdlibApi
     override fun beforeActivityLaunched() {
-//        super.beforeActivityLaunched()
         val instrumentation = InstrumentationRegistry.getInstrumentation()
         (instrumentation.targetContext.applicationContext as MyApp).run {
             setupMocks()
@@ -20,7 +19,6 @@ class ScreenUnitTestRule<T : Activity>(
     }
 
     override fun afterActivityLaunched() {
-        //super.afterActivityLaunched()
         activity.navigateToScreen()
     }
 }

@@ -7,6 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
 
+//Retrofit interface
 interface ServerAPI {
     @GET(BuildConfig.GET_DEFINE_PATH)
     fun getDefinitionsAsync(

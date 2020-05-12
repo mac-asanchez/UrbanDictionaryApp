@@ -27,8 +27,11 @@ import org.mockito.junit.MockitoJUnitRunner
 class MainActivityTest {
     private lateinit var viewModel: MainViewModel
     private val repository = Mockito.mock(ServerRepository::class.java)
+
+    //waiting resource
     val waitIdlingResource = DelayableIdlingResource()
 
+    //Needed rule to start UI
     @get:Rule
     val activityTestRule = ScreenUnitTestRule(
         activityClass = MainActivity::class.java,
@@ -39,20 +42,24 @@ class MainActivityTest {
     )
 
     private fun setUp() {
+        //binding viewModel
         (activityTestRule.activity as MainActivity).run {
             layout.setVariable(BR.viewModel, viewModel)
             layout.executePendingBindings()
         }
     }
 
+    //UI View
     private val etTerm = withId(R.id.etTerm)
 
     @Test
     fun writeTerm() {
+        //write a term and check that the value is there
         onView(etTerm).perform(typeText("wat"))
         onView(etTerm).check(matches(withText("wat")))
     }
 
+    //gets definitions response from resources
     private fun setAvailableDefinitions() {
         val jsonString = activityTestRule.activity.resources.openRawResource(R.raw.get_definitions)
             .bufferedReader().use { it.readText() }
@@ -76,6 +83,7 @@ class MainActivityTest {
         }
     }
 
+    //get the api result (mock) and check if the available definitions are there
     @Test
     fun loadRecyclerView() {
         waitIdlingResource.wait(5000)

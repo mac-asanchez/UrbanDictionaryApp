@@ -1,6 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    //declaring versions to use in gradle
     ext.kotlin_version = '1.3.71'
     ext.lifecycle_version = '1.1.1'
     ext.android_plugin_version = '2.2.0-alpha4'
@@ -30,13 +31,14 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
+//declaring versions to use in app gradle
 ext {
     androidxTest = '1.1.1'
     androidxTestCore = '1.0.0'
     androidxTestEspresso = '3.1.1'
     androidXUI = '2.2.1'
     buildTools = '28.0.3'
-    compileSdk = 28
+    compileSdk = 29
     coroutines = '1.1.1'
     espresso = '3.2.0'
     exoplayer = '2.10.8'
@@ -52,6 +54,7 @@ ext {
     timber = '4.7.1'
 }
 
+//function to get properties from file (simplifies properties per flavor)
 def getProps(path) {
     Properties props = new Properties()
     props.load(new FileInputStream(file(path)))

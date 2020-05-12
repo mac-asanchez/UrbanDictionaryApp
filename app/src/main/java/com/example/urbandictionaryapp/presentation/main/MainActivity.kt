@@ -15,15 +15,43 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 class MainActivity : BaseActivity() {
+    //region variables
+    //viewModel is injected
     private val viewModel by viewModel<MainViewModel>()
     lateinit var layout: MainActivityLayoutBinding
     private lateinit var definitionsAdapter: RVDefinitionAdapter
+    //endregion
 
+    //region life cycle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         wireOnPropertyChanged()
     }
 
+    override fun onResume() {
+        super.onResume()
+        layout =
+            setBinding(this, R.layout.main_activity_layout, viewModel) as MainActivityLayoutBinding
+        initRecyclerView()
+        viewModel.loading = false
+    }
+
+    override fun onBackPressed() {
+        when (viewModel.exitEnabled) {
+            true -> super.onBackPressed()
+            else -> {
+                viewModel.exitEnabled = true
+                Toast.makeText(this, getString(R.string.exit_message), Toast.LENGTH_SHORT).show()
+                wait(3) {
+                    viewModel.exitEnabled = false
+                }
+            }
+        }
+    }
+    //endregion
+
+    //region functions
+    //communication from viewModel to Activity - reacting to changes
     private fun wireOnPropertyChanged() {
         Timber.d("MainActivity_TAG: wireOnPropertyChanged: ")
         viewModel.onPropertyChanged(BR.term) {
@@ -58,25 +86,5 @@ class MainActivity : BaseActivity() {
     private fun playSound(definition: Definition) {
         Timber.d("MainActivity_TAG: playSound: ${definition.word}, currentSoundIndex: ${definition.currentSoundIndex}")
     }
-
-    override fun onResume() {
-        super.onResume()
-        layout =
-            setBinding(this, R.layout.main_activity_layout, viewModel) as MainActivityLayoutBinding
-        initRecyclerView()
-        viewModel.loading = false
-    }
-
-    override fun onBackPressed() {
-        when (viewModel.exitEnabled) {
-            true -> super.onBackPressed()
-            else -> {
-                viewModel.exitEnabled = true
-                Toast.makeText(this, getString(R.string.exit_message), Toast.LENGTH_SHORT).show()
-                wait(3) {
-                    viewModel.exitEnabled = false
-                }
-            }
-        }
-    }
+    //endregion
 }

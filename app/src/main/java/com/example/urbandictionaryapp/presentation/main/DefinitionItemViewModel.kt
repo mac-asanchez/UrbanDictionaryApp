@@ -3,6 +3,7 @@ package com.example.urbandictionaryapp.presentation.main
 import com.example.urbandictionaryapp.model.Definition
 import com.example.urbandictionaryapp.presentation.base.BaseViewModel
 
+//Item view model for data binding
 class DefinitionItemViewModel : BaseViewModel() {
     var definition: Definition? = null
 

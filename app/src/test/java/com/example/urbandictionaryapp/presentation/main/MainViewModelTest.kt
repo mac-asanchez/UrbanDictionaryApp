@@ -24,21 +24,25 @@ import org.robolectric.annotation.Config
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [Build.VERSION_CODES.P])
 class MainViewModelTest {
+    //variables
     private lateinit var viewModel: MainViewModel
     private val repository = mock(ServerRepository::class.java)
     private lateinit var context: Context
 
     @Before
     fun setUp() {
+        //creates viewModel for all the tests
         viewModel = MainViewModel(repository)
         context = InstrumentationRegistry.getInstrumentation().context
     }
 
     @After
     fun wrappingThingsUp() {
+        //needs to stop koin after each test
         stopKoin()
     }
 
+    //reads the response (mock) from resources
     private fun setAvailableDefinitions() {
         val jsonString = context.resources.openRawResource(R.raw.get_definitions)
             .bufferedReader().use { it.readText() }
@@ -65,6 +69,7 @@ class MainViewModelTest {
 
     @Test
     fun testTerm() {
+        //tests that a term is being written
         val testString = "wat"
         viewModel.onPropertyChanged(BR.term) {
             assertTrue(viewModel.term == testString)
@@ -74,6 +79,7 @@ class MainViewModelTest {
 
     @Test
     fun testAvailableDefinitions() {
+        //test that the response is being kept
         viewModel.onPropertyChanged(BR.availableDefinitions) {
             assertTrue(viewModel.availableDefinitions.size == 10)
         }
@@ -82,6 +88,7 @@ class MainViewModelTest {
 
     @Test
     fun testRecyclerViewItemViewModels() {
+        //test the recycler items being assigned
         viewModel.onPropertyChanged(BR.availableDefinitions) {
             assertTrue(viewModel.recyclerViewItemViewModels.size == 10)
         }
@@ -90,6 +97,7 @@ class MainViewModelTest {
 
     @Test
     fun testSorted() {
+        //test the sort being done
         assertFalse(viewModel.sorted)
         setAvailableDefinitions()
 

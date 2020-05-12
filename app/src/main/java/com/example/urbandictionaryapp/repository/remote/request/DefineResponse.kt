@@ -1,8 +1,8 @@
 package com.example.urbandictionaryapp.repository.remote.request
 
-
 import com.squareup.moshi.Json
 
+//Class for remote call adapter
 data class DefineResponse(
     @Json(name = "list")
     val list: List<DefinitionResponse>

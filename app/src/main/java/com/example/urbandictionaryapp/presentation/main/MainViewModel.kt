@@ -10,12 +10,15 @@ import com.example.urbandictionaryapp.repository.runOnResult
 import timber.log.Timber
 
 class MainViewModel(
+    /*repository injected*/
     private val repository: ServerRepository
 ) : BaseViewModel() {
+    //bindable property that changes from the UI
     @Bindable
     var term: String = ""
         set(value) {
             field = value
+            //Communication to the Activity
             notifyPropertyChanged(BR.term)
         }
 
@@ -23,6 +26,7 @@ class MainViewModel(
     var availableDefinitions = emptyList<Definition>()
         set(value) {
             field = value
+            //fills the recyclerview items
             recyclerViewItemViewModels = value.map {
                 DefinitionItemViewModel().apply {
                     definition = it
@@ -44,6 +48,7 @@ class MainViewModel(
                 notifyPropertyChanged(BR.sorted)
         }
 
+    //region functions
     fun getDefinitions() = background {
         Timber.d("MainViewModel_TAG: getDefinition: ")
         repository.getDefinitionsAsync(term).runOnResult {
@@ -67,4 +72,5 @@ class MainViewModel(
         recyclerViewItemViewModels.sortByDescending { it.definition?.thumbsDown }
         sorted = true
     }
+    //endregion
 }

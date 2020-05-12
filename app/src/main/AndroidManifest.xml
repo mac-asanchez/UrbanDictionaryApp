@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.urbandictionaryapp">
 
+    <!--declaring the needed permissions-->
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <!--Needed permission for no-internet process-->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
